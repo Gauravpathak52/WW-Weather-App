@@ -120,7 +120,7 @@ class WeatherController extends GetxController {
             ],
           ),
         );
-
+//
         _speech.listen(onResult: (val) {
           cityName.value = val.recognizedWords;
           textController.text = val.recognizedWords;
