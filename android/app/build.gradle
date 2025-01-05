@@ -37,10 +37,10 @@ android {
     }
      signingConfigs {
     release {
-        keyAlias keystoreProperties['keyAlias']
-        keyPassword keystoreProperties['keyPassword']
-        storeFile file(keystoreProperties['storeFile'])
-        storePassword keystoreProperties['storePassword']
+        keyAlias 'my-key-alias' // यह वही alias है जो आपने कीस्टोर बनाते समय दिया था
+        keyPassword 'Gaurav207' // यहां अपना कीस्टोर पासवर्ड डालें
+        storeFile file('/Users/gauravpathak/my-release-key.jks') // यही path है
+        storePassword 'Gaurav207' // यहां कीस्टोर का पासवर्ड डालें
     }
 }
 

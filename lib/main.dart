@@ -73,7 +73,7 @@ class WeatherController extends GetxController {
   WeatherFactory wf = WeatherFactory("25ea4ddc425fd290784d241f12f46d46");
   late stt.SpeechToText _speech;
   bool _isListening = false;
-
+  TextEditingController textController = TextEditingController();
   @override
   void onInit() {
     super.onInit();
@@ -122,6 +122,7 @@ class WeatherController extends GetxController {
 
         _speech.listen(onResult: (val) {
           cityName.value = val.recognizedWords;
+          textController.text = val.recognizedWords;
           if (val.finalResult) {
             _stopListening();
           }
@@ -196,10 +197,7 @@ class WeatherScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.settings),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SettingsScreen()),
-              );
+              Get.to(() => SettingsScreen());
             },
           ),
         ],
@@ -210,6 +208,7 @@ class WeatherScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              controller: weatherController.textController,
               onChanged: (value) {
                 weatherController.cityName.value = value;
               },
