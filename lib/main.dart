@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:ww_weather/appbar.dart';
+import 'package:ww_weather/controller/apikey.dart';
 import 'package:ww_weather/setting.dart';
 
 void main() {
@@ -70,7 +71,7 @@ class _MyAppState extends State<MyApp> {
 class WeatherController extends GetxController {
   var cityName = ''.obs;
   var weather = Rx<Weather?>(null);
-  WeatherFactory wf = WeatherFactory("25ea4ddc425fd290784d241f12f46d46");
+  WeatherFactory wf = WeatherFactory(Apikey.apikey);
   late stt.SpeechToText _speech;
   bool _isListening = false;
   TextEditingController textController = TextEditingController();
